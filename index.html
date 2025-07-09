@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>塔防花园 - Defense Games Studio</title>
+    <meta name="description" content="专注塔防游戏开发，带给您策略与乐趣的完美结合">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>🏰 塔防花园</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#games">游戏大厅</a></li>
+                <li><a href="#about">关于我们</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-icon">🏰</div>
+                <h1 class="hero-title">塔防花园</h1>
+                <p class="hero-subtitle">Defense Games Studio</p>
+                <p class="hero-description">专注塔防游戏开发，带给您策略与乐趣的完美结合</p>
+                <button class="cta-button" onclick="scrollToGames()">开始游戏之旅</button>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-elements">
+                    <div class="floating-item carrot">🥕</div>
+                    <div class="floating-item fruit">🍎</div>
+                    <div class="floating-item tower">🗼</div>
+                    <div class="floating-item fruit">🍊</div>
+                    <div class="floating-item carrot">🥕</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏展示区域 -->
+    <section id="games" class="games-section">
+        <div class="container">
+            <h2 class="section-title">我的游戏作品</h2>
+            <p class="section-subtitle">每一款游戏都是精心打造的策略体验</p>
+            
+            <div class="games-grid">
+                <!-- 萝卜塔防 -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-preview">
+                            <div class="preview-placeholder">
+                                <span class="game-icon">🥕</span>
+                                <p>游戏预览</p>
+                            </div>
+                        </div>
+                        <div class="game-status">可玩</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>萝卜塔防</h3>
+                        <p class="game-subtitle">Carrot Defense</p>
+                        <p class="game-description">用可爱的萝卜守护你的花园，策略与萌宠的完美结合</p>
+                        <div class="game-tags">
+                            <span class="tag">塔防</span>
+                            <span class="tag">策略</span>
+                            <span class="tag">轻松</span>
+                        </div>
+                        <button class="play-button" onclick="openGame('carrot-defense')">立即游戏</button>
+                    </div>
+                </div>
+
+                <!-- 水果塔防 -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-preview">
+                            <div class="preview-placeholder">
+                                <span class="game-icon">🍎</span>
+                                <p>游戏预览</p>
+                            </div>
+                        </div>
+                        <div class="game-status">可玩</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>水果塔防</h3>
+                        <p class="game-subtitle">Fruit Tower Defense</p>
+                        <p class="game-description">美味的水果化身守护者，保卫果园免受入侵</p>
+                        <div class="game-tags">
+                            <span class="tag">塔防</span>
+                            <span class="tag">策略</span>
+                            <span class="tag">治愈</span>
+                        </div>
+                        <button class="play-button" onclick="openGame('fruit-defense')">立即游戏</button>
+                    </div>
+                </div>
+
+                <!-- 即将推出 -->
+                <div class="game-card coming-soon">
+                    <div class="game-image">
+                        <div class="game-preview">
+                            <div class="preview-placeholder">
+                                <span class="game-icon">🌟</span>
+                                <p>敬请期待</p>
+                            </div>
+                        </div>
+                        <div class="game-status coming">开发中</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>更多精彩</h3>
+                        <p class="game-subtitle">More Games Coming</p>
+                        <p class="game-description">更多有趣的塔防游戏正在开发中，敬请期待！</p>
+                        <div class="game-tags">
+                            <span class="tag">即将推出</span>
+                        </div>
+                        <button class="play-button" disabled>开发中</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色功能区域 -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">为什么选择我们的游戏？</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>简单易上手</h3>
+                    <p>3分钟学会，30分钟沉迷</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>策略性强</h3>
+                    <p>每一步都需要深思熟虑</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>画风可爱</h3>
+                    <p>治愈系视觉享受</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">关于开发者</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>独立游戏开发者</h3>
+                    <p>我是一名热爱游戏开发的独立开发者，专注于创造有趣且富有策略性的塔防游戏。每一款游戏都承载着我对游戏设计的理解和对玩家体验的关注。</p>
+                    <p>我相信好的游戏不需要复杂的操作，但需要深度的策略思考。希望我的游戏能为您带来轻松愉快的游戏时光。</p>
+                    <div class="contact-info">
+                        <h4>联系方式</h4>
+                        <p>📧 邮箱：myandong1@gmail.com</p>
+                        <p>🌐 GitHub：github.com/MYanDong</p>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="developer-avatar">👨‍💻</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>🏰 塔防花园</h3>
+                    <p>Defense Games Studio</p>
+                </div>
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#games">游戏大厅</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>联系我们</h4>
+                    <p>📧 myandong1@gmail.com</p>
+                    <p>🌐 GitHub：github.com/MYanDong</p>
+                    <p>🌍 个人网页：<a href="https://myandong.xyz" target="_blank" rel="noopener noreferrer">myandong.xyz</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 塔防花园. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html> 

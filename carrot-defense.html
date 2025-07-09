@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>萝卜塔防 - 塔防花园</title>
+    <meta name="description" content="用可爱的萝卜守护你的花园，策略与萌宠的完美结合">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/game-page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>🏰 塔防花园</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#games">游戏大厅</a></li>
+                <li><a href="index.html#about">关于我们</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 游戏横幅区域 -->
+    <section class="game-banner">
+        <div class="container">
+            <div class="banner-content">
+                <div class="banner-info">
+                    <div class="game-breadcrumb">
+                        <a href="index.html">首页</a>
+                        <span>/</span>
+                        <a href="index.html#games">游戏大厅</a>
+                        <span>/</span>
+                        <span>萝卜塔防</span>
+                    </div>
+                    <h1 class="game-title">🥕 萝卜塔防</h1>
+                    <p class="game-subtitle">Carrot Defense</p>
+                    <p class="game-intro">用可爱的萝卜守护你的花园，策略与萌宠的完美结合</p>
+                    <div class="game-meta">
+                        <div class="game-tags">
+                            <span class="tag">塔防</span>
+                            <span class="tag">策略</span>
+                            <span class="tag">轻松</span>
+                        </div>
+                        <div class="game-stats">
+                            <span class="stat">⭐ 4.8</span>
+                            <span class="stat">🎮 600+ 次游玩</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-actions">
+                    <button class="start-game-btn" onclick="startGame()">🚀 开始游戏</button>
+                    <button class="fullscreen-btn" onclick="toggleFullscreen()">📺 全屏游戏</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏区域 -->
+    <section class="game-section">
+        <div class="container">
+            <div class="game-container">
+                <div class="game-window">
+                    <div class="game-iframe-container">
+                        <iframe 
+                            id="gameFrame"
+                            src="https://carrot-defense.netlify.app"
+                            frameborder="0"
+                            allowfullscreen
+                            title="萝卜塔防游戏">
+                        </iframe>
+                        <div class="loading-overlay" id="loadingOverlay">
+                            <div class="loading-spinner">
+                                <div class="spinner"></div>
+                                <p>游戏加载中...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game-controls">
+                        <button class="control-btn" onclick="reloadGame()" title="重新加载">
+                            🔄 重新开始
+                        </button>
+                        <button class="control-btn" onclick="toggleFullscreen()" title="全屏模式">
+                            📺 全屏
+                        </button>
+                        <button class="control-btn" onclick="showHelp()" title="游戏帮助">
+                            ❓ 帮助
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏信息区域 -->
+    <section class="game-info-section">
+        <div class="container">
+            <div class="info-grid">
+                <!-- 游戏介绍 -->
+                <div class="info-card game-description">
+                    <h3>🎮 游戏介绍</h3>
+                    <p>萝卜塔防是一款萌系轻量级塔防游戏，30秒上手，120秒一局。可爱的萝卜化身为4种不同的炮台，通过拖拽建造和升级来守护花园，阻止敌人到达终点。</p>
+                    
+                    <h4>🥕 萝卜炮台类型</h4>
+                    <ul>
+                        <li><strong>🔴 单体炮台：</strong>高伤害精准射击，适合对付高血量怪物</li>
+                        <li><strong>🟢 群体炮台：</strong>毒气范围攻击，群体伤害效果</li>
+                        <li><strong>🔵 减速炮台：</strong>冰冻减速效果，控制敌人移动</li>
+                        <li><strong>🟡 金币萝卜：</strong>定期生产金币，提供经济支持</li>
+                    </ul>
+                    
+                    <h4>👾 敌人类型</h4>
+                    <ul>
+                        <li><strong>👤 小兵：</strong>基础敌人，血量适中</li>
+                        <li><strong>🛡️ 坦克：</strong>高血量重装单位，移动缓慢</li>
+                        <li><strong>🦋 飞行：</strong>空中单位，走直线路径</li>
+                        <li><strong>👑 BOSS：</strong>超高血量，会主动攻击炮台</li>
+                    </ul>
+                </div>
+
+                <!-- 操作指南 */
+                <div class="info-card game-controls-guide">
+                    <h3>🎯 操作指南</h3>
+                    <div class="controls-list">
+                        <div class="control-item">
+                            <span class="control-key">🖱️ 点击选择</span>
+                            <span class="control-desc">选择炮台类型</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="control-key">🖱️ 拖拽建造</span>
+                            <span class="control-desc">拖拽放置新炮台</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="control-key">⬆️ 升级系统</span>
+                            <span class="control-desc">3级升级，每级属性提升20%</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="control-key">💰 收集金币</span>
+                            <span class="control-desc">点击金币收集资源</span>
+                        </div>
+                    </div>
+                    
+                    <h4>💡 策略技巧</h4>
+                    <div class="tips-list">
+                        <div class="tip-item">
+                            <span class="tip-icon">🔴</span>
+                            <span>单体炮台对付坦克和BOSS效果最佳</span>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">🟢</span>
+                            <span>群体炮台适合对付成群的小兵</span>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">🔵</span>
+                            <span>减速炮台配合其他炮台提升效率</span>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">🟡</span>
+                            <span>及时建造金币萝卜保证经济来源</span>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">👑</span>
+                            <span>BOSS会攻击炮台，注意保护重要炮台</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 游戏截图 -->
+                <div class="info-card game-screenshots">
+                    <h3>📸 游戏截图</h3>
+                    <div class="screenshots-grid">
+                        <div class="screenshot-item">
+                            <div class="screenshot-placeholder">
+                                <span class="screenshot-icon">🥕</span>
+                                <p>游戏主界面</p>
+                            </div>
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="screenshot-placeholder">
+                                <span class="screenshot-icon">⚔️</span>
+                                <p>战斗场景</p>
+                            </div>
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="screenshot-placeholder">
+                                <span class="screenshot-icon">🏆</span>
+                                <p>胜利画面</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 相关游戏推荐 -->
+    <section class="related-games-section">
+        <div class="container">
+            <h2 class="section-title">🎮 其他游戏</h2>
+            <div class="related-games-grid">
+                <div class="related-game-card">
+                    <div class="related-game-image">
+                        <span class="game-icon">🍎</span>
+                    </div>
+                    <div class="related-game-info">
+                        <h4>水果塔防</h4>
+                        <p>美味的水果化身守护者</p>
+                        <button class="play-related-btn" onclick="window.open('fruit-defense.html', '_blank')">
+                            立即游戏
+                        </button>
+                    </div>
+                </div>
+                <div class="related-game-card coming-soon">
+                    <div class="related-game-image">
+                        <span class="game-icon">🌟</span>
+                    </div>
+                    <div class="related-game-info">
+                        <h4>更多游戏</h4>
+                        <p>敬请期待</p>
+                        <button class="play-related-btn" disabled>开发中</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部导航 -->
+    <section class="bottom-navigation">
+        <div class="container">
+            <div class="bottom-nav-content">
+                <a href="index.html" class="nav-link">
+                    <span class="nav-icon">🏠</span>
+                    <span>返回首页</span>
+                </a>
+                <a href="index.html#games" class="nav-link">
+                    <span class="nav-icon">🎮</span>
+                    <span>游戏大厅</span>
+                </a>
+                <button class="nav-link share-btn" onclick="shareGame()">
+                    <span class="nav-icon">📤</span>
+                    <span>分享游戏</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 帮助弹窗 -->
+    <div class="help-modal" id="helpModal">
+        <div class="help-content">
+            <div class="help-header">
+                <h3>🎮 游戏帮助</h3>
+                <button class="close-help" onclick="closeHelp()">&times;</button>
+            </div>
+            <div class="help-body">
+                <h4>🎯 游戏目标</h4>
+                <p>阻止敌人到达花园终点，保护你的生命值。通过7波敌人进攻，击败最终BOSS获得胜利！</p>
+                
+                <h4>🥕 炮台类型</h4>
+                <ul>
+                    <li><strong>🔴 单体炮台：</strong>高伤害精准射击，适合对付高血量怪物</li>
+                    <li><strong>🟢 群体炮台：</strong>毒气范围攻击，群体伤害效果</li>
+                    <li><strong>🔵 减速炮台：</strong>冰冻减速效果，控制敌人移动</li>
+                    <li><strong>🟡 金币萝卜：</strong>定期生产金币，提供经济支持</li>
+                </ul>
+                
+                <h4>💡 获胜策略</h4>
+                <p>1. 优先建造金币萝卜保证经济来源<br>
+                   2. 用减速炮台控制敌人节奏<br>
+                   3. 单体炮台对付坦克和BOSS<br>
+                   4. 群体炮台应对小兵群体<br>
+                   5. BOSS会攻击炮台，做好防护准备</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/game-page.js"></script>
+</body>
+</html> 

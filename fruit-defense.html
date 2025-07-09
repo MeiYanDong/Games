@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水果塔防 - 塔防花园</title>
+    <meta name="description" content="美味的水果化身守护者，保卫果园免受入侵">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/game-page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>🏰 塔防花园</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#games">游戏大厅</a></li>
+                <li><a href="index.html#about">关于我们</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 游戏横幅区域 -->
+    <section class="game-banner">
+        <div class="container">
+            <div class="banner-content">
+                <div class="banner-info">
+                    <div class="game-breadcrumb">
+                        <a href="index.html">首页</a>
+                        <span>/</span>
+                        <a href="index.html#games">游戏大厅</a>
+                        <span>/</span>
+                        <span>水果塔防</span>
+                    </div>
+                    <h1 class="game-title">🍎 水果塔防</h1>
+                    <p class="game-subtitle">Fruit Tower Defense</p>
+                    <p class="game-intro">美味的水果化身守护者，保卫果园免受入侵</p>
+                    <div class="game-meta">
+                        <div class="game-tags">
+                            <span class="tag">塔防</span>
+                            <span class="tag">策略</span>
+                            <span class="tag">治愈</span>
+                        </div>
+                        <div class="game-stats">
+                            <span class="stat">⭐ 4.9</span>
+                            <span class="stat">🎮 800+ 次游玩</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-actions">
+                    <button class="start-game-btn" onclick="startGame()">🚀 开始游戏</button>
+                    <button class="fullscreen-btn" onclick="toggleFullscreen()">📺 全屏游戏</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏区域 -->
+    <section class="game-section">
+        <div class="container">
+            <div class="game-container">
+                <div class="game-window">
+                    <div class="game-iframe-container">
+                        <iframe 
+                            id="gameFrame"
+                            src="https://www.youware.com/project/qcaa9l0aax?enter_from=shareg"
+                            frameborder="0"
+                            allowfullscreen
+                            title="水果塔防游戏">
+                        </iframe>
+                        <div class="loading-overlay" id="loadingOverlay">
+                            <div class="loading-spinner">
+                                <div class="spinner"></div>
+                                <p>游戏加载中...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game-controls">
+                        <button class="control-btn" onclick="reloadGame()" title="重新加载">
+                            🔄 重新开始
+                        </button>
+                        <button class="control-btn" onclick="toggleFullscreen()" title="全屏模式">
+                            📺 全屏
+                        </button>
+                        <button class="control-btn" onclick="showHelp()" title="游戏帮助">
+                            ❓ 帮助
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏信息区域 -->
+    <section class="game-info-section">
+        <div class="container">
+            <div class="info-grid">
+                <!-- 游戏介绍 -->
+                <div class="info-card game-description">
+                    <h3>🎮 游戏介绍</h3>
+                    <p>水果塔防是一款策略塔防游戏，通过放置不同种类的水果塔防来阻止敌人入侵。击败敌人获得金币，用于建造和升级塔防，随着波次递增，挑战难度逐步提升。</p>
+                    
+                    <h4>🏰 水果塔防类型</h4>
+                    <ul>
+                        <li><strong>🍎 苹果塔：</strong>爆炸攻击，对周围敌人造成范围伤害</li>
+                        <li><strong>🍌 香蕉塔：</strong>减速效果，降低敌人移动速度</li>
+                        <li><strong>🍊 橙子塔：</strong>穿透攻击，可同时攻击多个敌人</li>
+                        <li><strong>🍉 西瓜塔：</strong>超高伤害，范围溅射攻击</li>
+                    </ul>
+                    
+                    <h4>🛡️ 难度模式</h4>
+                    <ul>
+                        <li><strong>🌱 简单模式：</strong>适合新手，敌人较弱，资源充足</li>
+                        <li><strong>⚖️ 普通模式：</strong>平衡体验，标准挑战</li>
+                        <li><strong>🔥 困难模式：</strong>敌人更强，资源有限</li>
+                        <li><strong>💀 地狱模式：</strong>极限挑战，考验策略技巧</li>
+                    </ul>
+                </div>
+
+                <!-- 操作指南 -->
+                <div class="info-card game-controls-guide">
+                    <h3>🎯 操作指南</h3>
+                    <div class="controls-list">
+                        <div class="control-item">
+                            <span class="control-key">🖱️ 点击选择</span>
+                            <span class="control-desc">选择水果塔防类型</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="control-key">🖱️ 点击放置</span>
+                            <span class="control-desc">在空地上放置塔防</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="control-key">🔄 点击升级</span>
+                            <span class="control-desc">升级已建造的塔防</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="control-key">💰 出售回收</span>
+                            <span class="control-desc">出售塔防回收部分金币</span>
+                        </div>
+                    </div>
+                    
+                    <h4>💡 策略技巧</h4>
+                    <div class="tips-list">
+                        <div class="tip-item">
+                            <span class="tip-icon">🍎</span>
+                            <span>苹果塔适合对付密集敌群，爆炸范围大</span>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">🍌</span>
+                            <span>香蕉塔配合其他塔防，减速控制敌人</span>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">🍊</span>
+                            <span>橙子塔攻击力高，适合对付坦克敌人</span>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">🍉</span>
+                            <span>西瓜塔伤害极高，放在敌人密集区域</span>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">👾</span>
+                            <span>BOSS关卡提前布局，集中火力攻击</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 游戏截图 -->
+                <div class="info-card game-screenshots">
+                    <h3>📸 游戏截图</h3>
+                    <div class="screenshots-grid">
+                        <div class="screenshot-item">
+                            <div class="screenshot-placeholder">
+                                <span class="screenshot-icon">🍎</span>
+                                <p>果园守护</p>
+                            </div>
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="screenshot-placeholder">
+                                <span class="screenshot-icon">🐛</span>
+                                <p>害虫入侵</p>
+                            </div>
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="screenshot-placeholder">
+                                <span class="screenshot-icon">✨</span>
+                                <p>特殊技能</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 相关游戏推荐 -->
+    <section class="related-games-section">
+        <div class="container">
+            <h2 class="section-title">🎮 其他游戏</h2>
+            <div class="related-games-grid">
+                <div class="related-game-card">
+                    <div class="related-game-image">
+                        <span class="game-icon">🥕</span>
+                    </div>
+                    <div class="related-game-info">
+                        <h4>萝卜塔防</h4>
+                        <p>用可爱的萝卜守护花园</p>
+                        <button class="play-related-btn" onclick="window.open('carrot-defense.html', '_blank')">
+                            立即游戏
+                        </button>
+                    </div>
+                </div>
+                <div class="related-game-card coming-soon">
+                    <div class="related-game-image">
+                        <span class="game-icon">🌟</span>
+                    </div>
+                    <div class="related-game-info">
+                        <h4>更多游戏</h4>
+                        <p>敬请期待</p>
+                        <button class="play-related-btn" disabled>开发中</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部导航 -->
+    <section class="bottom-navigation">
+        <div class="container">
+            <div class="bottom-nav-content">
+                <a href="index.html" class="nav-link">
+                    <span class="nav-icon">🏠</span>
+                    <span>返回首页</span>
+                </a>
+                <a href="index.html#games" class="nav-link">
+                    <span class="nav-icon">🎮</span>
+                    <span>游戏大厅</span>
+                </a>
+                <button class="nav-link share-btn" onclick="shareGame()">
+                    <span class="nav-icon">📤</span>
+                    <span>分享游戏</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 帮助弹窗 -->
+    <div class="help-modal" id="helpModal">
+        <div class="help-content">
+            <div class="help-header">
+                <h3>🎮 游戏帮助</h3>
+                <button class="close-help" onclick="closeHelp()">&times;</button>
+            </div>
+            <div class="help-body">
+                <h4>🎯 游戏目标</h4>
+                <p>阻止敌人到达终点，保护你的生命值。击败敌人获得金币，用于建造和升级塔防。每5关会有BOSS挑战！</p>
+                
+                <h4>🍎 水果塔防</h4>
+                <ul>
+                    <li><strong>🍎 苹果塔：</strong>爆炸攻击，对周围敌人造成范围伤害</li>
+                    <li><strong>🍌 香蕉塔：</strong>减速效果，降低敌人移动速度</li>
+                    <li><strong>🍊 橙子塔：</strong>穿透攻击，可同时攻击多个敌人</li>
+                    <li><strong>🍉 西瓜塔：</strong>超高伤害，范围溅射攻击</li>
+                </ul>
+                
+                <h4>💡 获胜策略</h4>
+                <p>1. 合理搭配不同类型的水果塔<br>
+                   2. 在敌人密集处放置西瓜塔<br>
+                   3. 用香蕉塔减速配合高伤害塔防<br>
+                   4. 及时升级塔防提升攻击力<br>
+                   5. BOSS关卡前做好充分准备</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/game-page.js"></script>
+</body>
+</html> 

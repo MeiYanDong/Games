@@ -491,12 +491,22 @@ document.head.appendChild(additionalStyles);
 
 // 初始化科学上网提醒
 function initVpnNotice() {
-    // 检查是否需要显示科学上网提醒
-    if (!shouldShowNotice('Vpn')) {
-        const vpnNotice = document.querySelector('.vpn-notice');
-        if (vpnNotice) {
+    const vpnNotice = document.getElementById('vpnNotice') || document.querySelector('.vpn-notice');
+    if (vpnNotice) {
+        // 检查是否需要显示科学上网提醒
+        if (shouldShowNotice('Vpn')) {
+            // 确保提醒显示
+            vpnNotice.style.display = 'block';
+            vpnNotice.style.visibility = 'visible';
+            vpnNotice.style.opacity = '1';
+            console.log('科学上网提醒已显示');
+        } else {
+            // 隐藏提醒
             vpnNotice.style.display = 'none';
+            console.log('科学上网提醒已隐藏（用户之前关闭过）');
         }
+    } else {
+        console.error('未找到科学上网提醒元素');
     }
 }
 
@@ -504,7 +514,7 @@ function initVpnNotice() {
 
 // 关闭科学上网提醒
 function closeVpnNotice() {
-    const vpnNotice = document.querySelector('.vpn-notice');
+    const vpnNotice = document.getElementById('vpnNotice') || document.querySelector('.vpn-notice');
     if (vpnNotice) {
         vpnNotice.style.animation = 'slideOutUp 0.3s ease-in';
         setTimeout(() => {
@@ -524,4 +534,18 @@ function shouldShowNotice(noticeType) {
     // 24小时后重新显示提醒
     const oneDay = 24 * 60 * 60 * 1000;
     return (Date.now() - parseInt(hideTime)) > oneDay;
-} 
+}
+
+// 重置所有提醒状态（调试用）
+function resetAllNotices() {
+    localStorage.removeItem('hideVpnNotice');
+    localStorage.removeItem('hideMobileNotice');
+    localStorage.removeItem('hideClientNotice');
+    console.log('所有提醒状态已重置');
+    
+    // 重新初始化科学上网提醒
+    initVpnNotice();
+}
+
+// 暴露重置函数到全局，方便调试
+window.resetAllNotices = resetAllNotices; 

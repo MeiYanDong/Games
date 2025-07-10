@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScrolling();
     initAnimations();
     initGameButtons();
+    detectMobileDevice(); // 添加移动设备检测
 });
 
 // 导航栏功能
@@ -250,7 +251,7 @@ window.addEventListener('load', () => {
         hero.style.opacity = '1';
     }
     
-    // 预加载关键资源
+    // 预加载游戏页面以提高性能
     preloadGamePages();
 });
 
@@ -319,3 +320,42 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style); 
+
+// 移动设备检测和客户端提醒
+function detectMobileDevice() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                    (navigator.maxTouchPoints && navigator.maxTouchPoints > 2) ||
+                    window.innerWidth <= 768;
+    
+    if (isMobile && shouldShowClientNotice()) {
+        const clientNoticeSection = document.getElementById('clientNoticeSection');
+        if (clientNoticeSection) {
+            clientNoticeSection.style.display = 'block';
+        }
+    }
+}
+
+// 关闭客户端提醒
+function closeClientNotice() {
+    const clientNoticeSection = document.getElementById('clientNoticeSection');
+    if (clientNoticeSection) {
+        const notice = clientNoticeSection.querySelector('.client-notice');
+        notice.style.animation = 'slideOutUp 0.3s ease-in';
+        setTimeout(() => {
+            clientNoticeSection.style.display = 'none';
+        }, 300);
+    }
+    
+    // 记录用户选择，24小时内不再显示
+    localStorage.setItem('hideClientNotice', Date.now().toString());
+}
+
+// 检查是否需要显示客户端提醒
+function shouldShowClientNotice() {
+    const hideTime = localStorage.getItem('hideClientNotice');
+    if (!hideTime) return true;
+    
+    // 24小时后重新显示提醒
+    const oneDay = 24 * 60 * 60 * 1000;
+    return (Date.now() - parseInt(hideTime)) > oneDay;
+} 

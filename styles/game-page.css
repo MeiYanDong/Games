@@ -139,10 +139,6 @@
     }
 }
 
-.mobile-notice {
-    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
-}
-
 .vpn-notice {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
@@ -685,25 +681,25 @@
         padding: 1rem 1.5rem;
     }
     
-    /* 提醒横幅移动端优化 */
-    .notice-content {
+    /* 科学上网提醒移动端优化 */
+    .vpn-notice .notice-content {
         padding: 1rem;
         gap: 0.8rem;
     }
     
-    .notice-icon {
+    .vpn-notice .notice-icon {
         font-size: 1.5rem;
     }
     
-    .notice-text h4 {
+    .vpn-notice .notice-text h4 {
         font-size: 1rem;
     }
     
-    .notice-text p {
+    .vpn-notice .notice-text p {
         font-size: 0.9rem;
     }
     
-    .notice-close {
+    .vpn-notice .notice-close {
         width: 28px;
         height: 28px;
         font-size: 1.1rem;
@@ -749,18 +745,18 @@
         font-size: 1.2rem;
     }
     
-    /* 小屏幕提醒横幅优化 */
-    .notice-content {
+    /* 小屏幕科学上网提醒优化 */
+    .vpn-notice .notice-content {
         padding: 0.8rem;
         gap: 0.6rem;
     }
     
-    .notice-text h4 {
+    .vpn-notice .notice-text h4 {
         font-size: 0.95rem;
         margin-bottom: 0.2rem;
     }
     
-    .notice-text p {
+    .vpn-notice .notice-text p {
         font-size: 0.85rem;
         line-height: 1.3;
     }

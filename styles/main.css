@@ -115,6 +115,99 @@ body {
     transition: var(--transition);
 }
 
+/* 客户端提醒样式 */
+.client-notice-section {
+    padding: 0;
+    background: transparent;
+    margin-top: 70px; /* 为固定导航栏留出空间 */
+}
+
+.client-notice {
+    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    border-radius: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: slideInDown 0.5s ease-out;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOutUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.notice-banner {
+    margin: 0;
+    overflow: hidden;
+}
+
+.notice-content {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 0;
+    gap: 1rem;
+    position: relative;
+}
+
+.notice-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.notice-text {
+    flex: 1;
+}
+
+.notice-text h4 {
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.3rem 0;
+}
+
+.notice-text p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.notice-close {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.notice-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
 /* Hero Section样式 */
 .hero {
     min-height: 100vh;
@@ -623,6 +716,30 @@ body {
     .container {
         padding: 0 15px;
     }
+    
+    /* 客户端提醒移动端优化 */
+    .notice-content {
+        padding: 1rem 0;
+        gap: 0.8rem;
+    }
+    
+    .notice-icon {
+        font-size: 1.5rem;
+    }
+    
+    .notice-text h4 {
+        font-size: 1rem;
+    }
+    
+    .notice-text p {
+        font-size: 0.9rem;
+    }
+    
+    .notice-close {
+        width: 28px;
+        height: 28px;
+        font-size: 1.1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -649,6 +766,22 @@ body {
     .feature-icon,
     .developer-avatar {
         font-size: 4rem;
+    }
+    
+    /* 小屏幕客户端提醒优化 */
+    .notice-content {
+        padding: 0.8rem 0;
+        gap: 0.6rem;
+    }
+    
+    .notice-text h4 {
+        font-size: 0.95rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .notice-text p {
+        font-size: 0.85rem;
+        line-height: 1.3;
     }
 }
 

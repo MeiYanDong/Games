@@ -14,8 +14,8 @@ function initGamePage() {
         hideLoadingOverlay();
     }, 2000);
     
-    // 检测移动设备并显示提醒
-    detectMobileDevice();
+    // 初始化科学上网提醒
+    initVpnNotice();
     
     // 检测游戏页面类型
     const pageTitle = document.title;
@@ -489,19 +489,8 @@ additionalStyles.textContent = `
 
 document.head.appendChild(additionalStyles); 
 
-// 检测移动设备
-function detectMobileDevice() {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-                    (navigator.maxTouchPoints && navigator.maxTouchPoints > 2) ||
-                    window.innerWidth <= 768;
-    
-    if (isMobile && shouldShowNotice('Mobile')) {
-        const mobileNotice = document.getElementById('mobileNotice');
-        if (mobileNotice) {
-            mobileNotice.style.display = 'block';
-        }
-    }
-    
+// 初始化科学上网提醒
+function initVpnNotice() {
     // 检查是否需要显示科学上网提醒
     if (!shouldShowNotice('Vpn')) {
         const vpnNotice = document.querySelector('.vpn-notice');
@@ -511,19 +500,7 @@ function detectMobileDevice() {
     }
 }
 
-// 关闭移动设备提醒
-function closeMobileNotice() {
-    const mobileNotice = document.getElementById('mobileNotice');
-    if (mobileNotice) {
-        mobileNotice.style.animation = 'slideOutUp 0.3s ease-in';
-        setTimeout(() => {
-            mobileNotice.style.display = 'none';
-        }, 300);
-    }
-    
-    // 记录用户选择，一段时间内不再显示
-    localStorage.setItem('hideMobileNotice', Date.now().toString());
-}
+
 
 // 关闭科学上网提醒
 function closeVpnNotice() {

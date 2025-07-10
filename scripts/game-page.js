@@ -14,6 +14,9 @@ function initGamePage() {
         hideLoadingOverlay();
     }, 2000);
     
+    // 检测移动设备并显示提醒
+    detectMobileDevice();
+    
     // 检测游戏页面类型
     const pageTitle = document.title;
     if (pageTitle.includes('萝卜')) {
@@ -485,3 +488,63 @@ additionalStyles.textContent = `
 `;
 
 document.head.appendChild(additionalStyles); 
+
+// 检测移动设备
+function detectMobileDevice() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                    (navigator.maxTouchPoints && navigator.maxTouchPoints > 2) ||
+                    window.innerWidth <= 768;
+    
+    if (isMobile && shouldShowNotice('Mobile')) {
+        const mobileNotice = document.getElementById('mobileNotice');
+        if (mobileNotice) {
+            mobileNotice.style.display = 'block';
+        }
+    }
+    
+    // 检查是否需要显示科学上网提醒
+    if (!shouldShowNotice('Vpn')) {
+        const vpnNotice = document.querySelector('.vpn-notice');
+        if (vpnNotice) {
+            vpnNotice.style.display = 'none';
+        }
+    }
+}
+
+// 关闭移动设备提醒
+function closeMobileNotice() {
+    const mobileNotice = document.getElementById('mobileNotice');
+    if (mobileNotice) {
+        mobileNotice.style.animation = 'slideOutUp 0.3s ease-in';
+        setTimeout(() => {
+            mobileNotice.style.display = 'none';
+        }, 300);
+    }
+    
+    // 记录用户选择，一段时间内不再显示
+    localStorage.setItem('hideMobileNotice', Date.now().toString());
+}
+
+// 关闭科学上网提醒
+function closeVpnNotice() {
+    const vpnNotice = document.querySelector('.vpn-notice');
+    if (vpnNotice) {
+        vpnNotice.style.animation = 'slideOutUp 0.3s ease-in';
+        setTimeout(() => {
+            vpnNotice.style.display = 'none';
+        }, 300);
+    }
+    
+    // 记录用户选择，一段时间内不再显示
+    localStorage.setItem('hideVpnNotice', Date.now().toString());
+}
+
+// 检查是否需要显示提醒
+function shouldShowNotice(noticeType) {
+    const hideTime = localStorage.getItem(`hide${noticeType}Notice`);
+    if (!hideTime) return true;
+    
+    // 24小时后重新显示提醒
+    const oneDay = 24 * 60 * 60 * 1000;
+    return (Date.now() - parseInt(hideTime)) > oneDay;
+} 

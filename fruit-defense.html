@@ -64,6 +64,35 @@
         </div>
     </section>
 
+    <!-- 重要提醒区域 -->
+    <section class="game-notices">
+        <div class="container">
+            <!-- 移动设备提醒 -->
+            <div class="notice-banner mobile-notice" id="mobileNotice" style="display: none;">
+                <div class="notice-content">
+                    <div class="notice-icon">💻</div>
+                    <div class="notice-text">
+                        <h4>建议使用电脑访问</h4>
+                        <p>本游戏需要鼠标操作，暂不支持触屏设备，建议使用电脑获得最佳游戏体验</p>
+                    </div>
+                    <button class="notice-close" onclick="closeMobileNotice()">&times;</button>
+                </div>
+            </div>
+            
+            <!-- 科学上网提醒 -->
+            <div class="notice-banner vpn-notice">
+                <div class="notice-content">
+                    <div class="notice-icon">🌐</div>
+                    <div class="notice-text">
+                        <h4>网络访问提醒</h4>
+                        <p>本游戏需要科学上网才能正常加载，如遇到加载问题请检查网络连接</p>
+                    </div>
+                    <button class="notice-close" onclick="closeVpnNotice()">&times;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 游戏区域 -->
     <section class="game-section">
         <div class="container">
